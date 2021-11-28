@@ -29,6 +29,7 @@ import Nifty.*;
 import Renderer.*;
 import Sound.Music;
 import Data.DataManager;
+import Interface.GameCameraState;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -120,6 +121,7 @@ public class Main extends SimpleApplication {
 		this.stateManager.attach(new GUI(this));
 
 		this.stateManager.attach(new ScreenshotAppState(new String()));
+		this.stateManager.attach(new GameCameraState());
 	}
 
 	public void createAxialMarker() {
