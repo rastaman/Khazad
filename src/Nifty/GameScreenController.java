@@ -49,6 +49,7 @@ import java.text.NumberFormat;
 import java.util.HashMap;
 
 import PathFinding.PathManager;
+import de.lessvoid.nifty.input.NiftyStandardInputEvent;
 
 /**
  *
@@ -74,7 +75,7 @@ public class GameScreenController implements ScreenController, KeyInputHandler, 
 		this.screen = screen;
 		System.out.println("bind( " + screen.getScreenId() + ")");
 		screen.addKeyboardInputHandler(new KeyBoardMapping(), this);
-		windows = screen.findElementByName("windows");
+		windows = screen.findElementById("windows");
 		//screen.addPreKeyboardInputHandler(new KeyBoardMapping(), this);
 		pathingCheckBox = screen.findNiftyControl("pathingCheckBox", CheckBox.class);
 		litSurfacesCheckBox = screen.findNiftyControl("litSurfacesCheckBox", CheckBox.class);
@@ -122,7 +123,7 @@ public class GameScreenController implements ScreenController, KeyInputHandler, 
 		MenuPopup = null;
 		PopulationPopup = null;
 		// close any open windows
-		for (Element tempElement : windows.getElements()) {
+		for (Element tempElement : windows.getChildren()) {
 			nifty.removeElement(screen, tempElement);
 		}
 		updatables.clear();
@@ -144,7 +145,7 @@ public class GameScreenController implements ScreenController, KeyInputHandler, 
 
 	public boolean keyEvent(NiftyInputEvent event) {
 		if (event != null) {
-			if (event == NiftyInputEvent.Escape) {
+			if (event == NiftyStandardInputEvent.Escape) {
 				// if a popup is open, close it, otherwise open the menu
 				if (MenuPopup != null) {
 					CloseMenuPopup();
@@ -253,7 +254,7 @@ public class GameScreenController implements ScreenController, KeyInputHandler, 
 		Element citizenWindow = citizenWindowCreator.create(nifty, screen, windows);
 		// the controller needs to be set on the panel rather than the control, maybe due to the hidden window-content panel
 		// there is something bugged about these ID's
-		Element citizenWindowPanel = citizenWindow.findElementByName(windowId + "#CitizenWindow#window-content#CitizenWindow#window-content#CitizenWindowPanel");
+		Element citizenWindowPanel = citizenWindow.findElementById(windowId + "#CitizenWindow#window-content#CitizenWindow#window-content#CitizenWindowPanel");
 		CitizenWindowController controller = citizenWindowPanel.getControl(CitizenWindowController.class);
 		controller.setCitizen(citizen);
 		updatables.put(windowId, controller);

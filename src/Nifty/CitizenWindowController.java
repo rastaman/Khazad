@@ -12,6 +12,7 @@ import de.lessvoid.nifty.Nifty;
 import de.lessvoid.nifty.NiftyEventSubscriber;
 import de.lessvoid.nifty.controls.Controller;
 import de.lessvoid.nifty.controls.Label;
+import de.lessvoid.nifty.controls.Parameters;
 import de.lessvoid.nifty.controls.WindowClosedEvent;
 import de.lessvoid.nifty.elements.Element;
 import de.lessvoid.nifty.input.NiftyInputEvent;
@@ -35,7 +36,7 @@ public class CitizenWindowController implements Controller, Updatable {
 	Label jobLabel;
 	Label taskLabel;
 
-	public void bind(Nifty nifty, Screen screen, Element element, Properties parameter, Attributes controlDefinitionAttributes) {
+	public void bind(Nifty nifty, Screen screen, Element element, Parameters parameter) {
 		this.nifty = nifty;
 		this.screen = screen;
 		this.control = element;
@@ -59,10 +60,13 @@ public class CitizenWindowController implements Controller, Updatable {
 		taskLabel.setText("Current Task: " + citizen.getTask().getName());
 	}
 
-	public void init(Properties parameter, Attributes controlDefinitionAttributes) {
+	public void init(Parameters parameter) {
 	}
 
 	public void onStartScreen() {
+	}
+
+	public void onEndScreen() {
 	}
 
 	public void onFocus(boolean getFocus) {

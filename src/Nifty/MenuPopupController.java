@@ -15,6 +15,7 @@ import Renderer.SelectionRenderer;
 import de.lessvoid.nifty.Nifty;
 import de.lessvoid.nifty.controls.Controller;
 import de.lessvoid.nifty.controls.Label;
+import de.lessvoid.nifty.controls.Parameters;
 import de.lessvoid.nifty.elements.Element;
 import de.lessvoid.nifty.input.NiftyInputEvent;
 import de.lessvoid.nifty.screen.KeyInputHandler;
@@ -40,17 +41,20 @@ public class MenuPopupController implements Controller {
 	Element popup;
 	GameScreenController screenController;
 
-	public void bind(Nifty nifty, Screen screen, Element element, Properties parameter, Attributes controlDefinitionAttributes) {
+	public void bind(Nifty nifty, Screen screen, Element element, Parameters parameter) {
 		this.nifty = nifty;
 		this.screen = screen;
 		this.popup = element;
 		this.screenController = (GameScreenController)screen.getScreenController();
 	}
 
-	public void init(Properties parameter, Attributes controlDefinitionAttributes) {
+	public void init(Parameters parameter) {
 	}
 
 	public void onStartScreen() {
+	}
+
+	public void onEndScreen() {
 	}
 
 	public void onFocus(boolean getFocus) {

@@ -21,6 +21,7 @@ import com.jme3.asset.AssetManager;
 import com.jme3.math.Plane;
 import com.jme3.math.Vector3f;
 import com.jme3.post.SceneProcessor;
+import com.jme3.profile.AppProfiler;
 import com.jme3.renderer.RenderManager;
 import com.jme3.renderer.ViewPort;
 import com.jme3.renderer.queue.RenderQueue;
@@ -37,6 +38,7 @@ public class TerrainSlicer implements SceneProcessor {
 	protected ViewPort vp;
 	protected GameCamera Cam;
 	protected Plane SlicingTopPlane, SlicingBottomPlane;
+	protected AppProfiler profiler;
 
 	public TerrainSlicer(AssetManager manager) {
 		this.manager = manager;
@@ -72,5 +74,9 @@ public class TerrainSlicer implements SceneProcessor {
 	}
 
 	public void cleanup() {
+	}
+	
+	public void setProfiler(AppProfiler profiler) {
+		this.profiler = profiler;
 	}
 }

@@ -12,6 +12,7 @@ import de.lessvoid.nifty.Nifty;
 import de.lessvoid.nifty.NiftyIdCreator;
 import de.lessvoid.nifty.controls.Controller;
 import de.lessvoid.nifty.controls.Label;
+import de.lessvoid.nifty.controls.Parameters;
 import de.lessvoid.nifty.controls.ScrollPanel;
 import de.lessvoid.nifty.controls.dynamic.CustomControlCreator;
 import de.lessvoid.nifty.elements.Element;
@@ -33,20 +34,23 @@ public class PopulationPopupController implements Controller {
 	ScrollPanel citizenScrollPanel;
 	Label idleCitizensLabel;
 
-	public void bind(Nifty nifty, Screen screen, Element element, Properties parameter, Attributes controlDefinitionAttributes) {
+	public void bind(Nifty nifty, Screen screen, Element element, Parameters parameter) {
 		this.nifty = nifty;
 		this.screen = screen;
 		this.popup = element;
-		this.citizenTableBody = popup.findElementByName("CitizenTableBody");
+		this.citizenTableBody = popup.findElementById("CitizenTableBody");
 		this.citizenScrollPanel = popup.findNiftyControl("CitizenScrollPanel", ScrollPanel.class);
 		this.idleCitizensLabel = popup.findNiftyControl("IdleCitizensLabel", Label.class);		
 		refreshPopulation();
 	}
 
-	public void init(Properties parameter, Attributes controlDefinitionAttributes) {
+	public void init(Parameters parameter) {
 	}
 
 	public void onStartScreen() {
+	}
+
+	public void onEndScreen() {
 	}
 
 	public void onFocus(boolean getFocus) {
